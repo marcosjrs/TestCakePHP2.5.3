@@ -41,3 +41,26 @@ Get Support!
 [![Bake Status](https://secure.travis-ci.org/cakephp/cakephp.png?branch=master)](http://travis-ci.org/cakephp/cakephp)
 
 ![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)
+
+Scripts BBDD Previos
+----------------------
+
+CREATE SCHEMA `restaurante` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci ;
+
+CREATE TABLE `restaurante`.`meseros` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `dni` VARCHAR(10) NULL,
+  `nombre` VARCHAR(50) NULL,
+  `apellido` VARCHAR(100) NULL,
+  `telefono` VARCHAR(10) NULL,
+  `created` DATETIME NULL DEFAULT NULL,
+  `modified` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish2_ci;
+
+INSERT INTO `restaurante`.`meseros` (`dni`, `nombre`, `apellido`, `telefono`, `created`) 
+  VALUES ('12345678Z', 'Andrés', 'Calamardo', '123121212', now());
+INSERT INTO `restaurante`.`meseros` (`dni`, `nombre`, `apellido`, `telefono`, `created`) 
+  VALUES ('87654321Z', 'Bob', 'Esponja', '123111111', now());
