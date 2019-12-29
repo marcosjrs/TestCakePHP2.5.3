@@ -64,4 +64,21 @@ class MeserosController extends AppController
            
         }
     }
+
+    public function eliminar($idMesero = null){
+        //comprobaciones
+        if($this->request->is('get')){
+            throw new MethodNotAllowedException('No Permitido');
+        }
+        if(!$idMesero){
+            throw new NotFoundException('Falta parámetro id del Mesero');
+        }
+        //borrado
+        if($this->Mesero->delete($idMesero)){
+            $this->Session->setFlash('Mesero eliminado correctamente','default',array('class'=>'success'));
+        }else{
+            $this->Session->setFlash('No se pudo eliminar el mesero');
+        }
+        $this->redirect(array('action'=>'index'));
+    }
 }
