@@ -1,5 +1,5 @@
 <h1>Listado de Meseros</h1>
-<div><?php echo $this->Html->link('Crear',array('controller'=>'meseros','action'=>'nuevo')) ?></div>
+<div><?php echo $this->Html->link('Crear',array('controller'=>'meseros','action'=>'crear')) ?></div>
 <table>
     <tr>
         <td>Id</td>
@@ -15,7 +15,7 @@
         <?php echo '<td>'.$mesero['Mesero']['id'].'</td>'; ?>
         <?php echo '<td>'.$mesero['Mesero']['nombre'].'</td>'; ?>
         <?php echo '<td>'.$mesero['Mesero']['apellido'].'</td>'; ?>
-        <?php echo '<td>'.$this->Html->link('Detalle', array('controller'=>'meseros','action'=>'detalle',$mesero['Mesero']['id'])).'</td>'; ?>
+        <?php echo '<td>'.$this->Html->link('Detalle', array('controller'=>'meseros','action'=>'ver',$mesero['Mesero']['id'])).'</td>'; ?>
     </tr>
     <?php    
     endforeach;

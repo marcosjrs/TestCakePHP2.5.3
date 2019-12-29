@@ -11,7 +11,7 @@ class MeserosController extends AppController
         $this->set('meseros',$this->Mesero->find('all'));
     }
 
-    public function detalle($idMesero = null){
+    public function ver($idMesero = null){
         if(!$idMesero){
             throw new NotFoundException('Falta parámetro id del Mesero');
         }
@@ -22,7 +22,7 @@ class MeserosController extends AppController
         $this->set('mesero',$mesero);
     }
 
-    public function nuevo(){
+    public function crear(){
         if($this->request->is('post')){
             //se ha llegado a través de una petición de un formulario
             //$this->Mesero->create();
