@@ -2,7 +2,7 @@
 
 class MeserosController extends AppController
 {
-    public $helpers = array('Html','Form');
+    public $helpers = array('Html','Form','Time');
     public $components = array('Session');
 
     //acción index
