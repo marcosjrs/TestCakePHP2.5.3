@@ -17,6 +17,7 @@
         <?php echo '<td>'.$mesero['Mesero']['apellido'].'</td>'; ?>
         <?php echo '<td>'.
         $this->Html->link('Detalle', array('controller'=>'meseros','action'=>'ver',$mesero['Mesero']['id'])).
+        ' '.
         $this->Html->link('Editar', array('controller'=>'meseros','action'=>'editar',$mesero['Mesero']['id'])).
         '</td>'; ?>
     </tr>

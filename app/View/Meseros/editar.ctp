@@ -1,5 +1,4 @@
 <h2>Crear Meser@</h2>
-
 <?php
     echo $this->Form->create('Mesero');
     echo $this->Form->input('nombre');
@@ -9,3 +8,4 @@
     echo $this->Form->end('Editar Mesero'); //Submit con value Crear Mesero y termina Form
     //La validadión se integra en el Modelo (Mesero.php, en este caso)
 ?>
+<?php echo $this->Html->link("Volver a Listado", array('controller'=>'meseros', 'action'=>'index'))  ?>
