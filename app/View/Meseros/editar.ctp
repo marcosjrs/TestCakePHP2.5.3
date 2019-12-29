@@ -1,4 +1,4 @@
-<h2>Crear Meser@</h2>
+<h3>Crear Meser@</h3>
 <?php
     echo $this->Form->create('Mesero');
     echo $this->Form->input('nombre');

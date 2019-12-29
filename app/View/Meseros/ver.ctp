@@ -1,4 +1,4 @@
-<h2>Detalle Meser@</h2>
+<h3>Detalle Meser@</h3>
 <p>Nombre: <?php echo $mesero['Mesero']['nombre'] ;?> </p>
 <p>DNI: <?php echo $mesero['Mesero']['dni'] ;?> </p>
 <p>Teléfono: <?php echo $mesero['Mesero']['telefono'] ;?> </p>
