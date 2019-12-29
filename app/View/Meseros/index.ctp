@@ -20,7 +20,9 @@
         ' '.
         $this->Html->link('Editar', array('controller'=>'meseros','action'=>'editar',$mesero['Mesero']['id'])).
         ' '.
-        $this->Form->postLink('Eliminar', array('controller'=>'meseros','action'=>'eliminar',$mesero['Mesero']['id'])).
+        $this->Form->postLink('Eliminar', 
+                        array('controller'=>'meseros','action'=>'eliminar',$mesero['Mesero']['id']),
+                        array('confirm'=>'¿Seguro que quieres eliminar a '.$mesero['Mesero']['nombre'].'?')).
         '</td>'; ?>
     </tr>
     <?php    
