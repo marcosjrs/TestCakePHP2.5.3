@@ -32,7 +32,36 @@ class MeserosController extends AppController
                     );
                 $this->redirect(array('action'=>'index'));
             }
-            $this->Session->setFlash('No se pudieron guardar los datoscrear el mesero');
+            $this->Session->setFlash('No se pudieron guardar los datos');
+        }
+    }
+
+    public function editar($idMesero = null){
+        //recogida y sus comprobaciones
+        if(!$idMesero){
+            throw new NotFoundException('Falta parámetro id del Mesero');
+        }
+        $mesero = $this->Mesero->findById($idMesero);
+        if(!$mesero){
+            throw new NotFoundException('No existe un mesero con ese id');
+        }
+
+
+        if($this->request->is(array('post','put'))){
+            //se ha llegado a través de una petición de un formulario      
+            $this->Mesero->id = $idMesero; // le establecemos el id y luego intentamos guardar    
+            if($this->Mesero->save($this->request->data)){
+                $this->Session->setFlash('Meser@ grabad@ correctamente','default',
+                        array('class'=>'success')
+                    );
+                $this->redirect(array('action'=>'index'));
+            }else{
+                $this->Session->setFlash('No se pudieron guardar los datos');
+            }
+        }else{            
+             $this->request->data = $mesero;
+             //$this->set('mesero',$mesero); //con la linea anterior, ya rellena automaticamente el formulario de editar. Sin hacer esto y luego rellenar con los datos de este atributo...
+           
         }
     }
 }
