@@ -1,5 +1,5 @@
 <h1>Listado de Meseros</h1>
-
+<div><?php echo $this->Html->link('Crear',array('controller'=>'meseros','action'=>'nuevo')) ?></div>
 <table>
     <tr>
         <td>Id</td>
