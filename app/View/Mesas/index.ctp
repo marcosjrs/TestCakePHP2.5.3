@@ -1,4 +1,8 @@
 <h3>Listado de Mesas</h3>
+<div>
+    <?php echo $this->Html->link('Crear',array('controller'=>'mesas','action'=>'crear')) ?>
+    <?php echo $this->Html->link('Listado de meseros',array('controller'=>'meseros','action'=>'index')) ?>
+</div>
 <table>
     <tr>
         <th>Serie</th>
