@@ -2,6 +2,17 @@
 
 class Mesero extends AppModel
 {
+    //https://book.cakephp.org/2/en/models/virtual-fields.html
+    //se usará al hacer $this->set('meseros',$this->Mesa->Mesero->find('list')); en MesasController, 
+    //para pasarle los datos a la vista para hacer un selector de meseros disponibles, al crear una mesa
+    //Meterá (CONCAT (`Mesero`.`nombre`, " ", `Mesero`.`apellido`)) AS `Mesero__nombre_completo` en el select, 
+    /* En el controlador, luego en lugar del find anterior, usará el $virtualFields de la siguiente forma:
+    $this->set('meseros', $this->Mesa->Mesero->find('list', 
+                                            array('fields'=>array('id','nombre_completo')) 
+                                        ));
+    */
+    public $virtualFields = array('nombre_completo' => 'CONCAT (Mesero.nombre, " ", Mesero.apellido)');
+
     public $hasMany = array(
         'Mesa' => array(
             'className' => 'Mesa',

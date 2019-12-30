@@ -20,6 +20,18 @@ class MesasController extends AppController{
             }
             $this->Session->setFlash('No se pudieron guardar los datos');
         }
-        $this->set('meseros',$this->Mesa->Mesero->find('list'));
+        //Ejecutará SELECT `Mesero`.`id`, 
+       // (CONCAT (`Mesero`.`nombre`, " ", `Mesero`.`apellido`)) AS `Mesero__nombre_completo` 
+       // FROM `restaurante`.`meseros` AS `Mesero` WHERE 1 = 1
+       //Para esto se añadió en Mesero.php : public $virtualFields = array('nombre_completo' => 'CONCAT (Mesero.nombre, " ", Mesero.apellido)');
+     
+       $this->set('meseros',
+            $this->Mesa->Mesero->find(
+                'list', 
+                 array('fields'=>array('id','nombre_completo')) 
+            )
+        );
+        //La forma simple de pasar todos los ids sería:  $this->set('meseros',$this->Mesa->Mesero->find('list'));
+        //Al tener en la vista:  echo $this->Form->input('mesero_id');  generaba un selector de ids, pero poco intuitivos
     }
 }
