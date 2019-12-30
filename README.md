@@ -57,7 +57,7 @@ CREATE TABLE `restaurante`.`meseros` (
   `created` DATETIME NULL DEFAULT NULL,
   `modified` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
-ENGINE = MyISAM
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish2_ci;
 
@@ -65,5 +65,21 @@ INSERT INTO `restaurante`.`meseros` (`dni`, `nombre`, `apellido`, `telefono`, `c
   VALUES ('12345678Z', 'Andrés', 'Calamardo', '123121212', now());
 INSERT INTO `restaurante`.`meseros` (`dni`, `nombre`, `apellido`, `telefono`, `created`) 
   VALUES ('87654321Z', 'Bob', 'Esponja', '123111111', now());
-  
+
+CREATE TABLE `restaurante`.`mesas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `mesero_id` INT(11) NULL COMMENT 'Clave foranea al mesero que atenderá la mesa en un momento determinado',
+  `serie` VARCHAR(10) NULL COMMENT 'Numero identificativo de mesa dentro del restaurante',
+  `puestos` VARCHAR(20) NULL COMMENT 'numero de personas que cojen en la mesa',
+  `posicion` VARCHAR(100) NULL COMMENT 'Descripción del lugar en el que se encuentra la mesa ubicada',
+  `created` DATETIME NULL DEFAULT NULL,
+  `modified` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)); 
+
+INSERT INTO `restaurante`.`mesas` (`mesero_id`, `serie`, `puestos`, `posicion`, `created`) VALUES ('1', '001', '6', 'Esquina superior izquierda', now());
+INSERT INTO `restaurante`.`mesas` (`mesero_id`, `serie`, `puestos`, `posicion`, `created`) VALUES ('1', '002', '5', 'Centro superior ', now());
+INSERT INTO `restaurante`.`mesas` (`mesero_id`, `serie`, `puestos`, `posicion`, `created`) VALUES ('2', '003', '5', 'Centro superior derecho ', now());
+
+
 ```
+
