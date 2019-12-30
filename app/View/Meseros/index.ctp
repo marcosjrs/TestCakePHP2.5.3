@@ -1,5 +1,8 @@
 <h3>Listado de Meseros</h3>
-<div><?php echo $this->Html->link('Crear',array('controller'=>'meseros','action'=>'crear')) ?></div>
+<div>
+    <?php echo $this->Html->link('Crear',array('controller'=>'meseros','action'=>'crear')) ?>
+    <?php echo $this->Html->link('Listado de mesas',array('controller'=>'mesas','action'=>'index')) ?>
+</div>
 <table>
     <tr>
         <td>Id</td>
