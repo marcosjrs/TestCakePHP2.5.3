@@ -742,3 +742,14 @@ pre {
 #url-rewriting-warning {
 	display:none;
 }
+
+
+/** meseros **/
+.datos-mesero {
+    margin: 10px 0;
+}
+
+.datos-mesa {
+    margin: 10px 0;
+}
+
