@@ -43,22 +43,22 @@ class MesasController extends AppController
 
     public function editar($id = null)
     {
-        if(!$id){
+        if (!$id) {
             throw new NotFoundException('Falta parámetro id');
         }
-        if($this->request->is(array('post','put'))){
+        if ($this->request->is(array('post', 'put'))) {
             //llegó atraves de una petición desde un formulario
             $this->Mesa->id = $id;
-            if($this->Mesa->save($this->request->data)){
-                $this->Session->setFlash('Mesa guardada correctamente','default',array('class'=>'success'));
-                return $this->redirect(array("action"=>"index"));
-            }else{
+            if ($this->Mesa->save($this->request->data)) {
+                $this->Session->setFlash('Mesa guardada correctamente', 'default', array('class' => 'success'));
+                return $this->redirect(array("action" => "index"));
+            } else {
                 $this->Session->setFlash('No se han podido guardar los datos');
             }
-        }else{
+        } else {
             //llegó por get y vamos a rellenar los input para modificarlos
             $mesa = $this->Mesa->findById($id);
-            if(!$mesa){
+            if (!$mesa) {
                 throw new NotFoundException('No existe una mesa con ese identificador');
             }
             $this->request->data = $mesa;
