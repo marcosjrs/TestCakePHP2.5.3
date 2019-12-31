@@ -25,7 +25,9 @@
         </td>
         <td>
             <?php echo $this->Html->link('Editar', array('controller' => 'mesas', 'action' => 'editar',$mesa["Mesa"]["id"])); ?>
-            <?php echo $this->Html->link('Eliminar', array('controller' => 'mesas', 'action' => 'eliminar',$mesa["Mesa"]["id"])); ?>
+            <?php echo $this->Form->postLink('Eliminar', 
+                        array('controller'=>'mesas','action'=>'eliminar',$mesa['Mesa']['id']),
+                        array('confirm'=>'¿Seguro que quieres eliminar a '.$mesa['Mesa']['serie'].'?')); ?>
         </td>
     </tr>
     <?php endforeach; ?>

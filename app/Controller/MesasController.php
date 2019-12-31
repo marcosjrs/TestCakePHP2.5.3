@@ -72,4 +72,20 @@ class MesasController extends AppController
             );
         }
     }
+
+    public function eliminar($id = null)
+    {
+        if ($this->request->is('get')) {
+            throw new NotFoundException('No permitido');
+        }
+        if (!$id) {
+            throw new NotFoundException('Falta parámetro id');
+        }
+        if ($this->Mesa->delete($id)) {
+            $this->Session->setFlash('Mesa eliminada correctamente', 'default', array('class' => 'success'));
+            return $this->redirect(array('action' => 'index'));
+        } else {
+            $this->Session->setFlash('La mesa no podido ser eliminada');
+        }
+    }
 }
