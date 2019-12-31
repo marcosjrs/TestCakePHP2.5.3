@@ -40,4 +40,36 @@ class MesasController extends AppController
         //La forma simple de pasar todos los ids sería:  $this->set('meseros',$this->Mesa->Mesero->find('list'));
         //Al tener en la vista:  echo $this->Form->input('mesero_id');  generaba un selector de ids, pero poco intuitivos
     }
+
+    public function editar($id = null)
+    {
+        if(!$id){
+            throw new NotFoundException('Falta parámetro id');
+        }
+        if($this->request->is(array('post','put'))){
+            //llegó atraves de una petición desde un formulario
+            $this->Mesa->id = $id;
+            if($this->Mesa->save($this->request->data)){
+                $this->Session->setFlash('Mesa guardada correctamente','default',array('class'=>'success'));
+                return $this->redirect(array("action"=>"index"));
+            }else{
+                $this->Session->setFlash('No se han podido guardar los datos');
+            }
+        }else{
+            //llegó por get y vamos a rellenar los input para modificarlos
+            $mesa = $this->Mesa->findById($id);
+            if(!$mesa){
+                throw new NotFoundException('No existe una mesa con ese identificador');
+            }
+            $this->request->data = $mesa;
+            //vease explicación en metodo crear:
+            $this->set(
+                'meseros',
+                $this->Mesa->Mesero->find(
+                    'list',
+                    array('fields' => array('id', 'nombre_completo'))
+                )
+            );
+        }
+    }
 }

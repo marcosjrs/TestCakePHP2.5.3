@@ -24,8 +24,8 @@
             <?php echo $this->Html->link($mesa["Mesero"]["nombre"], array('controller' => 'meseros', 'action' => 'ver',$mesa["Mesero"]["id"])); ?>
         </td>
         <td>
-            <?php echo $this->Html->link('Editar', array('controller' => 'controller', 'action' => 'action')); ?>
-            <?php echo $this->Html->link('Eliminar', array('controller' => 'controller', 'action' => 'action')); ?>
+            <?php echo $this->Html->link('Editar', array('controller' => 'mesas', 'action' => 'editar',$mesa["Mesa"]["id"])); ?>
+            <?php echo $this->Html->link('Eliminar', array('controller' => 'mesas', 'action' => 'eliminar',$mesa["Mesa"]["id"])); ?>
         </td>
     </tr>
     <?php endforeach; ?>
